@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: theidlenotes
+
+  main:
+    allow-bean-definition-overriding: true
+
+  data:
+    mongodb:
+      uri: mongodb+srv://appAdmin:appAdmin@idlenotescluster.6dzspei.mongodb.net/?retryWrites=true&w=majority&appName=idleNotesCluster
+      database: globalnotesdb
+      auto-index-creation: true
+
+server:
+  servlet:
+    context-path: /idle-notes
+  port: 8080
+
+jwt:
+  secret: "TaK+HaV^uvCHEFsEVfypW#7g9^k*Z8$VjdgsbvsTvdh*#hbv"
