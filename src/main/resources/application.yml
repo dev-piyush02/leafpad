@@ -7,7 +7,7 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb+srv://appAdmin:appAdmin@idlenotescluster.6dzspei.mongodb.net/?retryWrites=true&w=majority&appName=idleNotesCluster
+      uri: ${MONGO_CLUSTER_URL}
       database: globalnotesdb
       auto-index-creation: true
 
@@ -17,4 +17,4 @@ server:
   port: 8080
 
 jwt:
-  secret: "TaK+HaV^uvCHEFsEVfypW#7g9^k*Z8$VjdgsbvsTvdh*#hbv"
+  secret: ${JWT_SECRET}
