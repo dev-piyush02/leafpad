@@ -29,6 +29,17 @@ public class NotesController {
         return new ResponseEntity<>(notesList.get(), HttpStatus.OK);
     }
 
+    @GetMapping("/view-note")
+    public ResponseEntity<Notes> getNotesUserById(@RequestHeader String noteId) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userid= authentication.getName();
+        if(userService.isNoteAvailaible(noteId)) {
+            Notes note= notesService.findNoteByID(noteId);
+            return new ResponseEntity<>(note, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
     @PutMapping("/update-note")
     public ResponseEntity<Notes> updateNotes(@RequestHeader String noteId, @RequestBody Notes note) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

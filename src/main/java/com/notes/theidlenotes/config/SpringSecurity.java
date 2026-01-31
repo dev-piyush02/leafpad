@@ -67,4 +67,5 @@ public class SpringSecurity {
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration auth) throws Exception {
         return auth.getAuthenticationManager();
-    }}
+    }
+}

@@ -63,7 +63,7 @@ public class PublicController {
             ResponseCookie cookie = ResponseCookie.from("access_token", jwtToken)
                     .httpOnly(true)
                     .secure(true)
-                    .sameSite("Strict")
+                    .sameSite("None")
                     .path("/")
                     .maxAge(60*30)
                     .build();
@@ -85,5 +85,19 @@ public class PublicController {
         }
         else
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(HttpServletResponse response) {
+        ResponseCookie cookie = ResponseCookie.from("access_token", "")
+                .httpOnly(true)
+                .secure(true)
+                .sameSite("None")
+                .path("/")
+                .maxAge(0)
+                .build();
+
+        response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
+        return ResponseEntity.ok().build();
     }
 }
